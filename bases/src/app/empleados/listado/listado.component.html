@@ -1,10 +1,21 @@
-<h1>Listado de Empleados</h1>
+<h1>Listado de Empleados {{titulo}}</h1>
 
 <ul>
+    <button (click)="borrar()">Borrar</button>
+    <div *ngIf="etiquetaBorrado; else noBorrado">
+        <h3>Empleado Borrado</h3>
+        <samp>{{etiquetaBorrado}}</samp>
+    </div>
+
+    <ng-template #noBorrado>
+      <h3>No se elimino ningun empledo </h3>
+    </ng-template>
+
     <li *ngFor="let empleado of empleados">
          <h1>{{empleado.nombres}} {{empleado.apellidos}}</h1>
          <h2>{{empleado.direccion}}</h2>
-         <h2>{{empleado.sueldo}}</h2>
+         <h2>{{empleado.sueldo}}</h2>n>
          <hr>
     </li>
+
 </ul>

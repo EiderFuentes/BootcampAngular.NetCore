@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IEmpleado } from '../interfaces/empleado';
 
 @Component({
@@ -9,25 +9,27 @@ import { IEmpleado } from '../interfaces/empleado';
   styleUrl: './listado.component.css'
 })
 export class ListadoComponent {
+
+  etiquetaBorrado: string = "";
+
+  //Decorredor
+   @Input()
     //Creo un arreglo
-   empleados: IEmpleado[] = [
-    {
-      nombres: "eider",
-      apellidos: "fuentes",
-      direcccion: "Calle 19",
-      sueldo: 2000
-    },
-    {
-      nombres: "carlos",
-      apellidos: "piedra",
-      direcccion: "los angeles",
-      sueldo: 5000
-    },
-    {
-      nombres: "juan",
-      apellidos: "hoyos",
-      direcccion: "medeelin",
-      sueldo: 3500
-    }
-   ];
+   empleados: IEmpleado[] = [];
+   
+   @Input()
+   titulo: string = "";
+
+   borrar(){
+    //console.log("El boton funciona");
+     //Guardo el objeto en una constante
+     const emp = this.empleados.shift();
+     if(emp !== undefined){
+       this.etiquetaBorrado = emp?.nombres + ' ' + emp?.apellidos;
+     }
+     else{
+       this.etiquetaBorrado="";
+     }
+
+   }
 }

@@ -1,0 +1,16 @@
+<h1> Listado de Clientes</h1>
+
+<div class="row">
+    <div class="col">
+       <app-listado-clientes> [cliente] ="clientes" </app-listado-clientes>
+    </div>
+    <div class="col">
+       <h3>Agregar</h3> 
+       <hr>
+       <form (submit)="agregar()" >
+           <input type="text" placeholder="Nombre" name="nombre" />
+           <input type="number" placeholder="Credito" name="credito" />
+           <button type="submit">Agregar</button>
+       </form>
+    </div>
+</div>
